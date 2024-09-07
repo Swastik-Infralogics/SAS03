@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHAI Project Details</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; /* Add margin around the page */
+            padding: 0; 
+            background-color: #f4f4f4; /* Grey Tint Background */
+        }
+        .container { 
+            width: 80%; 
+            margin: auto; 
+            padding: 20px; 
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            background-color: #f4f4f4; /* Grey Tint Background for Table */
+        }
+        th, td { 
+            border: 1px solid #ddd; 
+            padding: 8px; 
+            text-align: left; 
+        }
+        th { 
+            background-color: #6a1b9a; /* Purple Background for Table Header */
+            color: white; /* White Text for Table Header */
+        }
+        td {
+            color: black; /* Black Text for Table Cells */
+        }
+        #map { 
+            height: 400px; 
+        }
+        .swiper-container {
+            width: 100%;
+            height: 50vh; /* Adjusted to half of the viewport height */
+            position: relative; /* For positioning the buttons */
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .header-img { 
+            width: 70%; /* Reduced the header image size by 30% */
+            display: block;
+            margin: 0 auto; /* Center the image */
+        }
+        .nav {
+            text-align: center;
+            background-color: #6a1b9a; /* Purple Background for Navigation Bar */
+            padding: 10px 0;
+            font-size: 18px;
+            position: relative; /* Default position, not fixed */
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav.sticky {
+            position: fixed; /* Fix navigation bar at the top when scrolled */
+            top: 0;
+            width: 100%;
+        }
+        .nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: white; /* White Text for Navigation Links */
+            transition: color 0.3s;
+        }
+        .nav a:hover {
+            color: #ccc; /* Lighter purple for hover effect */
+        }
+        .swiper-button-prev, .swiper-button-next {
+            top: 50%; /* Center vertically */
+            transform: translateY(-50%); /* Adjust to vertical center */
+        }
+        .swiper-button-prev {
+            left: 10px; /* Left button close to the left edge */
+        }
+        .swiper-button-next {
+            right: 10px; /* Right button close to the right edge */
+        }
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Adjust Contact Details table column widths */
+        .contact-table th:nth-child(1), .contact-table td:nth-child(1) {
+            width: 5%; /* Narrow width for Sl.No */
+        }
+        .contact-table th:nth-child(2), .contact-table td:nth-child(2) {
+            width: 35%; /* Wider width for Name of Contact Person */
+        }
+        .contact-table th:nth-child(3), .contact-table td:nth-child(3) {
+            width: 30%; /* Medium width for Designation */
+        }
+        .contact-table th:nth-child(4), .contact-table td:nth-child(4) {
+            width: 30%; /* Medium width for Contact Number */
+        }
+
+        /* Scrollable content for project background */
+        .scrollable-content {
+            max-height: 300px; /* Limit the height */
+            overflow-y: auto; /* Enable scrolling */
+            padding-right: 10px; /* Add space for scrollbar */
+        }
+
+        /* Disclaimer Style */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #6a1b9a; /* Purple background for footer */
+            color: white;
+            margin-top: 20px;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+<img class="header-img" src="Picture1.jpg" alt="NHAI Header Image">
+
+<div class="nav" id="navbar">
+    <a href="#">HOME</a> <!-- This makes the page scroll to the top -->
+    <a href="#gallery">GALLERY</a>
+    <a href="#projectBackground">PROJECT BACKGROUND</a>
+    <a href="#projectDetails">PROJECT DETAILS</a>
+    <a href="#monthlyProgress">PHYSICAL PROGRESS</a>
+    <a href="#projectVideo">PROJECT VIDEO</a>
+    <a href="#contactDetails">CONTACT DETAILS</a>
+</div>
+
+<h2>Name of Work: Construction of 12 Nos of Standalone safety structures/works at different locations <br> &nbsp      on NH-3 in the state of Maharashtra</h2>
+
+
+<!-- Swiper -->
+<h3 id="gallery"></h3>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="D:\SAS03\Web Page\Web Page Photos\P7.jpg" alt="Project Photo 1"></div>
+        <div class="swiper-slide"><img src="D:\SAS03\Web Page\Web Page Photos\P8.jpg" alt="Project Photo 2"></div>
+        <div class="swiper-slide"><img src="D:\SAS03\Web Page\Web Page Photos\P10.jpg" alt="Project Photo 3"></div>
+    </div>
+
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+
+<!-- Project Background Section with scrollable content -->
+<h3 id="projectBackground">Project Background</h3>
+<div class="scrollable-content">
+    <p>The Construction of 12 Nos of Standalone Safety Structures/Works is an essential infrastructure project commissioned by the National Highways Authority of India (NHAI). The project focuses on enhancing safety and traffic flow on National Highway 3 (NH-3), which connects key regions in the state of Maharashtra, stretching from Mumbai to Agra, passing through major cities such as Thane, Nashik, Dhule, and Indore. This route plays a pivotal role in facilitating the movement of goods and passengers across the western and northern parts of India.</p>
+
+    <p>The purpose of these standalone structures is to mitigate the risk of accidents and improve overall highway safety through the construction of specific infrastructure, such as grade separators, vehicular underpasses (VUPs), and flyovers. These structures will address traffic congestion, improve access to remote areas, and provide safer crossings for pedestrians and local vehicles.</p>
+
+    <p>This initiative forms part of a broader effort by the Government of India to modernize national highways and ensure that critical road infrastructure aligns with the highest safety standards. Undertaken under the Engineering, Procurement, and Construction (EPC) mode, the project will be completed over two years, with a defect liability period of ten years thereafter, ensuring long-term maintenance and operational safety. This comprehensive approach ensures that both construction quality and long-term upkeep are prioritized.</p>
+
+    <p>The construction covers various standalone structures located at different chainages on NH-3, particularly in regions prone to traffic congestion and frequent accidents. The scope of work includes site preparation, excavation, construction of the new pavement, rehabilitation of existing infrastructure, and drainage systems. Once completed, these structures will significantly improve safety by providing uninterrupted traffic flow, reducing bottlenecks, and eliminating accident-prone zones.</p>
+
+    <p><b>Route Details:</b></p>
+    <p>NH-3 is one of the primary arterial roads connecting Mumbai (Maharashtra) to Agra (Uttar Pradesh). Along the route, it connects major cities and industrial hubs, including Thane, Bhiwandi, Nashik, Malegaon, Dhule, and beyond. This highway also serves as a vital link for trade and commerce, catering to both heavy cargo transportation and passenger vehicles.</p>
+
+    <p>The project primarily targets areas with high traffic density and frequent road intersections, aiming to separate local traffic from through traffic. Structures such as flyovers and vehicular underpasses at key junctions will enhance safety and reduce waiting times, allowing for a smoother, safer transit experience.</p>
+
+    <p><b>Benefits to the Public:</b></p>
+    <p><b>1) Enhanced Road Safety:</b></p>The construction of grade separators, underpasses, and flyovers will greatly reduce the risk of collisions, especially at intersections and busy crossways. This will also prevent conflicts between local traffic and highway traffic, leading to a significant reduction in road accidents.</p>
+
+    <p><b>2) Reduced Travel Time:</b></p> The removal of bottlenecks and the separation of high-speed through traffic from local road users will ensure a faster and more seamless travel experience for both commercial vehicles and commuters. This will especially benefit long-haul transportation between Maharashtra and northern India.</p>
+
+    <p><b>3) Economic Growth: </b>By improving the efficiency of NH-3, the project will support economic growth in the regions it traverses. Faster transportation of goods will lower logistics costs and bolster trade in the Mumbai–Agra corridor, benefiting industries, agriculture, and local businesses along the route.</p>
+
+    <p><b>4) Improved Connectivity:</b> The construction of these standalone structures will not only improve highway connectivity but also enhance access to remote villages and towns located near NH-3, which will now benefit from safer, easier access to major cities like Nashik and Dhule.</p>
+
+    <p><b>5) Long-Term Sustainability:</b> With a ten-year defect liability period, the project ensures that the structures remain in optimal condition for years to come, providing a long-term solution to traffic management and road safety.</p>
+
+    <p>The project is aligned with NHAI's larger goal of upgrading critical national highways across the country, ensuring that they are equipped to handle increasing traffic volumes while meeting stringent safety norms. By providing better connectivity, reducing accidents, and improving travel time, this project will significantly enhance the quality of life for daily commuters, local residents, and long-distance travelers alike.</p>
+</div>
+
+<h3 id="projectDetails">Project Details</h3>
+<table>
+    <tr>
+        <th>Description</th>
+        <th>Information</th>
+    </tr>
+    <tr>
+        <td>Name of the Project</td>
+        <td>Construction of 12 Nos of Standalone safety structures/works at different locations on NH-3 in the state of Maharashtra</td>
+    </tr>
+    <tr>
+        <td>Client</td>
+        <td>National Highways Authority of India (NHAI)</td>
+    </tr>
+    <tr>
+        <td>Contractor</td>
+        <td>M/s. Swastik - TandT JV</td>
+    </tr>
+    <tr>
+        <td>Name of the Consultant/Authority Engineer</td>
+        <td>As of now NHAI itself is supervising</td>
+    </tr>
+    <tr>
+        <td>Date of Commencement</td>
+        <td>22nd July 2024</td>
+    </tr>
+    <tr>
+        <td>Stipulated Date of Completion</td>
+        <td>21st May 2026</td>
+    </tr>
+    <tr>
+        <td>Duration</td>
+        <td>2 Years (Construction)</td>
+    </tr>
+</table>
+
+<!-- New Table -->
+<h3>Locations and Chainages of 12 Nos of Structures</h3>
+<table>
+    <tr>
+        <th>S.No</th>
+        <th>Name of the Location</th>
+        <th>Chainage</th>
+        <th>Google Link to Locate Starting Point of Structure</th>
+        <th>Google Link to Locate Ending Point of Structure</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Chalisgaon</td>
+        <td>262+850</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Arvi</td>
+        <td>279+100</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Chalisgaon Phata</td>
+        <td>303+765</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Sawadgaon</td>
+        <td>310+660</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Tehre Soygaon Junction</td>
+        <td>316+850</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Chandwad</td>
+        <td>354+020</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>10th Mile Junction</td>
+        <td>401+730</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>Jaulke Dindori</td>
+        <td>403+600</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>Indira Nagar</td>
+        <td>418+820</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>Ambebahula</td>
+        <td>429+120</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>11</td>
+        <td>Lahe Junction</td>
+        <td>498+050</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>Vashind Junction</td>
+        <td>518+650</td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+
+<h3 id="monthlyProgress">Physical Progress</h3>
+<table>
+    <tr>
+        <th>Sr. No.</th>
+        <th>Description</th>
+        <th>Up-to Previous Month (Up to 31/07/2024)</th>
+        <th>Current Month (For Aug-2024)</th>
+        <th>Up-to Date (%) (Up to 31/08/2024)</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Scheduled Physical Progress</td>
+        <td>0%</td>
+        <td>0%</td>
+        <td>0%</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Actual Physical Progress</td>
+        <td>0%</td>
+        <td>0%</td>
+        <td>0%</td>
+    </tr>
+</table>
+
+<h3 id="projectVideo">Project Video</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_id" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<!-- Contact Details Section -->
+<h3 id="contactDetails">Contact Details</h3>
+<table class="contact-table">
+    <tr>
+        <th>Sl.No</th>
+        <th>Name of Contact Person</th>
+        <th>Designation</th>
+        <th>Contact Number</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Mr. Venkata Sastry</td>
+        <td>Sr. Project Manager</td>
+        <td>+91 96035 06295</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Mr. Nitin Sharma</td>
+        <td>Public Relation Officer</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Mr. Gaurav Patil</td>
+        <td>Co-Ordinator</td>
+        <td>+91 86910 17728</td>
+    </tr>
+</table>
+
+<!-- Disclaimer Section -->
+<div class="footer">
+    <p>Disclaimer: The information provided on this site is for general informational purposes only and is subject to change.</p>
+    <p>Site maintained by M/s. Swastik Infralogics Pvt Ltd &#174. <p>All rights reserved.</p>
+</div>
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        loop: true,
+    });
+
+    // Sticky Navigation bar
+    window.onscroll = function() {stickyNav()};
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function stickyNav() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+</script>
+
+</body>
+</html>
