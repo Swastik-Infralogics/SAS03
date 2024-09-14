@@ -3,25 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SAS03-NHAI Standalone Project Details</title>
-    <link rel="icon" href=https://swastik-infralogics.github.io/SAS03/src/S.png type="image/png">
+    <title>SAS03-NHAI Standalone Project Information</title>
+    <link rel="icon" href="D:\SAS03\Web Page\Swastik S.png" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <style>
         body { 
             font-family: Arial, sans-serif; 
-            margin: 20px; /* Add margin around the page */
+            margin: 0;
             padding: 0; 
-            background-color: #f4f4f4; /* Grey Tint Background */
+            background-color: #f4f4f4;
         }
         .container { 
-            width: 80%; 
+            width: 95%; 
+            max-width: 1200px;
             margin: auto; 
-            padding: 20px; 
+            padding: 10px; 
         }
         table { 
-            width: 75%; 
+            width: 100%; 
             border-collapse: collapse; 
-            background-color: #f4f4f4; /* Grey Tint Background for Table */
+            background-color: #f4f4f4;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            display: block;
         }
         th, td { 
             border: 1px solid #ddd; 
@@ -29,19 +33,16 @@
             text-align: left; 
         }
         th { 
-            background-color: #6a1b9a; /* Purple Background for Table Header */
-            color: white; /* White Text for Table Header */
+            background-color: #6a1b9a;
+            color: white;
         }
         td {
-            color: black; /* Black Text for Table Cells */
-        }
-        #map { 
-            height: 400px; 
+            color: black;
         }
         .swiper-container {
             width: 100%;
-            height: 50vh; /* Adjusted to half of the viewport height */
-            position: relative; /* For positioning the buttons */
+            height: 50vh;
+            position: relative;
         }
         .swiper-slide img {
             width: 100%;
@@ -49,11 +50,14 @@
             object-fit: cover;
         }
         .header-img { 
-            width: 50%; /* Reduced the header image size by 50% */
+            width: 100%;
+            max-width: 500px;
             display: block;
-            margin: 50 auto; /* Left the image */
+            margin: 10px auto;
+            align-self: ;
+
         }
-             .nav {
+        .nav {
     	   text-align: center;
    	       background-color: #6a1b9a; /* Purple Background for Navigation Bar */
    	       padding: 10px 0;
@@ -85,89 +89,150 @@
         .nav a:hover {
             color: #ccc; /* Lighter purple for hover effect */
         }
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .nav-links {
+            display: flex;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .nav a:hover {
+            background-color: #4a0e78;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            
+        }
+        .hamburger span {
+            background-color: white;
+            height: 3px;
+            width: 25px;
+            margin: 2px 0;
+            display: inline-block;
+        }
         .swiper-button-prev, .swiper-button-next {
-            top: 50%; /* Center vertically */
-            transform: translateY(-50%); /* Adjust to vertical center */
+            color: white;
         }
-        .swiper-button-prev {
-            left: 10px; /* Left button close to the left edge */
-        }
-        .swiper-button-next {
-            right: 10px; /* Right button close to the right edge */
-        }
-        /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
-
-        /* Adjust Contact Details table column widths */
-        .contact-table th:nth-child(1), .contact-table td:nth-child(1) {
-            width: 5%; /* Narrow width for Sl.No */
-        }
-        .contact-table th:nth-child(2), .contact-table td:nth-child(2) {
-            width: 35%; /* Wider width for Name of Contact Person */
-        }
-        .contact-table th:nth-child(3), .contact-table td:nth-child(3) {
-            width: 30%; /* Medium width for Designation */
-        }
-        .contact-table th:nth-child(4), .contact-table td:nth-child(4) {
-            width: 30%; /* Medium width for Contact Number */
-        }
-
-        /* Scrollable content for project background */
         .scrollable-content {
-            max-height: 300px; /* Limit the height */
-            overflow-y: auto; /* Enable scrolling */
-            padding-right: 100px; /* Add space for scrollbar */
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 10px;
             text-align: justify;
-         }
-
-        /* Disclaimer Style */
+            border: 1px solid #ddd;
+            padding: 15px;
+            background-color: white;
+        }
         .footer {
             text-align: center;
-            padding: 5px;
-            background-color: #6a1b9a; /* Purple background for footer */
+            padding: 10px;
+            background-color: #6a1b9a;
             color: white;
-            margin-top: 5px;
+            margin-top: 20px;
         }
         .footer p {
             margin: 5px 0;
         }
-        @media screen and (max-width:600px)
-
+        iframe {
+            max-width: 100%;
+            height: 315px;
+        }
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: #6a1b9a;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav a {
+                padding: 10px;
+                width: 100%;
+                text-align: left;
+            }
+            .hamburger {
+                display: flex;
+            }
+            table {
+                font-size: 14px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+            .scrollable-content {
+                max-height: 200px;
+             /* Right-align for desktop view */
+             @media only screen and (min-width: 768px) {
+             .header-img {
+            margin-left: auto;
+            margin-right: 0;
+            align-self: flex-end;
+            }
+        }
     </style>
 </head>
 <body>
-<img class="header-img" src="Picture1.jpg" alt="NHAI Header Image">
+    <img class="header-img" src="Picture1.jpg" alt="NHAI Header Image">
 
-<div class="nav" id="navbar">
-    <a href="#">HOME</a> <!-- This makes the page scroll to the top -->
-    <a href="#gallery">GALLERY</a>
-    <a href="#projectBackground">PROJECT BACKGROUND</a>
-    <a href="#projectDetails">PROJECT DETAILS</a>
-    <a href="#monthlyProgress">PHYSICAL PROGRESS</a>
-    <a href="#projectVideo">PROJECT VIDEO</a>
-    <a href="#contactDetails">CONTACT</a>
-</div>
+    <nav class="nav" id="navbar">
+        <div class="nav-content">
+            <div class="hamburger" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <a href="#">HOME</a>
+                <a href="#gallery">GALLERY</a>
+                <a href="#projectBackground">PROJECT BACKGROUND</a>
+                <a href="#projectDetails">PROJECT DETAILS</a>
+                <a href="#monthlyProgress">PHYSICAL PROGRESS</a>
+                <a href="#projectVideo">PROJECT VIDEO</a>
+                <a href="#contactDetails">CONTACT</a>
+            </div>
+        </div>
+    </nav>
 
-<h2>Name of Work: Construction of 12 Nos of Standalone safety structures/works at different locations <br> on NH-3 in the state of Maharashtra</h2>
+    <div class="container">
+        <h2>Name of Work: Construction of 12 Nos of Standalone safety structures/works at different locations on NH-3 in the state of Maharashtra</h2>
 
+        <h3 id="gallery">Gallery</h3>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="P7.jpg" alt="Project Photo 1"></div>
+                <div class="swiper-slide"><img src="P8.jpg" alt="Project Photo 2"></div>
+                <div class="swiper-slide"><img src="P10.jpg" alt="Project Photo 3"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
 
-<!-- Swiper -->
-<h3 id="gallery"></h3>
-<div class="swiper-container">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="P7.jpg" alt="Project Photo 1"></div>
-        <div class="swiper-slide"><img src="P8.jpg" alt="Project Photo 2"></div>
-        <div class="swiper-slide"><img src="P10.jpg" alt="Project Photo 3"></div>
-    </div>
-
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-</div>
-
-<!-- Project Background Section with scrollable content -->
+        <!-- Project Background Section with scrollable content -->
 <h3 id="projectBackground">Project Background</h3>
 <div class="scrollable-content">
     <p>The Construction of 12 Nos of Standalone Safety Structures/Works is an essential infrastructure project commissioned by the National Highways Authority of India (NHAI). The project focuses on enhancing safety and traffic flow on National Highway 3 (NH-3), which connects key regions in the state of Maharashtra, stretching from Mumbai to Agra, passing through major cities such as Thane, Nashik, Dhule, and Indore. This route plays a pivotal role in facilitating the movement of goods and passengers across the western and northern parts of India.</p>
@@ -183,7 +248,7 @@
 
     <p>The project primarily targets areas with high traffic density and frequent road intersections, aiming to separate local traffic from through traffic. Structures such as flyovers and vehicular underpasses at key junctions will enhance safety and reduce waiting times, allowing for a smoother, safer transit experience.</p>
 
-    <p><b><mark>Benefits to the Public:</mark></b></p>
+    <p><b>Benefits to the Public:</b></p>
     <p><b>1) Enhanced Road Safety:</b></p>The construction of grade separators, underpasses, and flyovers will greatly reduce the risk of collisions, especially at intersections and busy crossways. This will also prevent conflicts between local traffic and highway traffic, leading to a significant reduction in road accidents.</p>
 
     <p><b>2) Reduced Travel Time:</b></p> The removal of bottlenecks and the separation of high-speed through traffic from local road users will ensure a faster and more seamless travel experience for both commercial vehicles and commuters. This will especially benefit long-haul transportation between Maharashtra and northern India.</p>
@@ -197,43 +262,43 @@
     <p>The project is aligned with NHAI's larger goal of upgrading critical national highways across the country, ensuring that they are equipped to handle increasing traffic volumes while meeting stringent safety norms. By providing better connectivity, reducing accidents, and improving travel time, this project will significantly enhance the quality of life for daily commuters, local residents, and long-distance travelers alike.</p>
 </div>
 
-<h3 id="projectDetails">Project Details</h3>
-<table>
-    <tr>
-        <th>Description</th>
-        <th>Information</th>
-    </tr>
-    <tr>
-        <td>Name of the Project</td>
-        <td>Construction of 12 Nos of Standalone safety structures/works at different locations on NH-3 in the state of Maharashtra</td>
-    </tr>
-    <tr>
-        <td>Client</td>
-        <td>National Highways Authority of India (NHAI)</td>
-    </tr>
-    <tr>
-        <td>Contractor</td>
-        <td>M/s. Swastik - TandT JV</td>
-    </tr>
-    <tr>
-        <td>Name of the Consultant/Authority Engineer</td>
-        <td>As of now NHAI itself is supervising</td>
-    </tr>
-    <tr>
-        <td>Date of Commencement</td>
-        <td>22nd July 2024</td>
-    </tr>
-    <tr>
-        <td>Stipulated Date of Completion</td>
-        <td>21st July 2026</td>
-    </tr>
-    <tr>
-        <td>Duration</td>
-        <td>2 Years (Construction)</td>
-    </tr>
-</table>
+        <h3 id="projectDetails">Project Details</h3>
+        <table>
+            <tr>
+                <th>Description</th>
+                <th>Information</th>
+            </tr>
+            <tr>
+                <td>Name of the Project</td>
+                <td>Construction of 12 Nos of Standalone safety structures/works at different locations on NH-3 in the state of Maharashtra</td>
+            </tr>
+            <tr>
+                <td>Client</td>
+                <td>National Highways Authority of India (NHAI)</td>
+            </tr>
+            <tr>
+                <td>Contractor</td>
+                <td>M/s. Swastik - TandT JV</td>
+            </tr>
+            <tr>
+                <td>Name of the Consultant/Authority Engineer</td>
+                <td>As of now NHAI itself is supervising</td>
+            </tr>
+            <tr>
+                <td>Date of Commencement</td>
+                <td>22nd July 2024</td>
+            </tr>
+            <tr>
+                <td>Stipulated Date of Completion</td>
+                <td>21st July 2026</td>
+            </tr>
+            <tr>
+                <td>Duration</td>
+                <td>2 Years (Construction)</td>
+            </tr>
+        </table>
 
-<!-- New Table -->
+        <!-- New Table -->
 <h3>Locations and Chainages of 12 Nos of Structures</h3>
 <table>
     <tr>
@@ -368,79 +433,93 @@
         <td>0%</td>
     </tr>
 </table>
-<h3 id="projectVideo">Project Video</h3>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/aP_LVR9S_W0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<!-- Contact Details Section -->
-<h3 id="contactDetails">Contact Details</h3>
-<table class="contact-table">
-    <tr>
-        <th>Sl.No</th>
-        <th>Name of Contact Person</th>
-        <th>Designation</th>
-        <th>Contact Number</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Mr. Venkata Sastry</td>
-        <td>Sr. Project Manager</td>
-        <td>+91 96035 06295</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>Mr. Nitin Sharma</td>
-        <td>Public Relation Officer</td>
-        <td>+91 88609 12479</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>Mr. Gaurav Patil</td>
-        <td>Co-Ordinator</td>
-        <td>+91 86910 17728</td>
-    </tr>
-</table>
+        <h3 id="projectVideo">Project Video</h3>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/aP_LVR9S_W0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<!-- Disclaimer Section -->
-<div class="footer">
-    <p>Disclaimer: The information provided on this site is for general informational purposes only and is subject to change.</p>
-    <p>Site maintained by M/s. Swastik Infralogics Pvt Ltd &#174. <p>All rights reserved.</p>
-</div>
+        <h3 id="contactDetails">Contact Details</h3>
+        <table>
+            <tr>
+                <th>Sl.No</th>
+                <th>Name of Contact Person</th>
+                <th>Designation</th>
+                <th>Contact Number</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Mr. Venkata Sastry</td>
+                <td>Sr. Project Manager</td>
+                <td>+91 96035 06295</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Mr. Nitin Sharma</td>
+                <td>Public Relation Officer</td>
+                <td>+91 88609 12479</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Mr. Gaurav Patil</td>
+                <td>Co-Ordinator</td>
+                <td>+91 86910 17728</td>
+            </tr>
+        </table>
+    </div>
 
-<!-- Swiper JS -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script>
-    var swiper = new Swiper('.swiper-container', {
-        spaceBetween: 30,
-        centeredSlides: true,
-        autoplay: {
-            delay: 2500,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        loop: true,
-    });
+    <div class="footer">
+        <p>Disclaimer: The information provided on this site is for general informational purposes only and is subject to change.</p>
+        <p>Site maintained by M/s. Swastik Infralogics Pvt Ltd &#174;. All rights reserved.</p>
+    </div>
 
-    // Sticky Navigation bar
-    window.onscroll = function() {stickyNav()};
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            loop: true,
+        });
 
-    var navbar = document.getElementById("navbar");
-    var sticky = navbar.offsetTop;
+        // Hamburger menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger-menu');
+            const navLinks = document.getElementById('nav-links');
 
-    function stickyNav() {
-        if (window.pageYOffset >= sticky) {
-            navbar.classList.add("sticky")
-        } else {
-            navbar.classList.remove("sticky");
-        }
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+
+            // Close menu when a link is clicked
+            navLinks.addEventListener('click', function(e) {
+                if(e.target.tagName === 'A') {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+        // Sticky Navigation bar
+        window.onscroll = function() {stickyNav()};
+
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+
+        function stickyNav() {
+         if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+         } else {
+        navbar.classList.remove("sticky");
     }
-</script>
-
+}
+    </script>
 </body>
 </html>
