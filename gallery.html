@@ -14,7 +14,7 @@
             min-width: 100%;
             min-height: 100%;
             z-index: -1;
-            object-fit: cover; /* Ensures the video covers the entire screen */
+            object-fit: cover;
             filter: brightness(0.5); /* Adjust the brightness for better contrast with text */
         }
 
@@ -26,7 +26,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative; /* Necessary to position content above the video */
+            position: relative;
         }
 
         .gallery-container {
@@ -58,14 +58,12 @@
             background-position: center;
             cursor: pointer;
             border-radius: 15px;
-            transition: transform 0.5s ease, filter 0.5s ease, box-shadow 0.5s ease;
-            filter: grayscale(0.8) brightness(0.6);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
             overflow: hidden;
         }
 
         .inner-container:hover {
-            filter: grayscale(0) brightness(1);
             transform: scale(1.5); /* Enlarge the image on hover */
             z-index: 2; /* Bring the hovered image to the front */
             box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.8); /* Add a glow effect */
@@ -82,11 +80,20 @@
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
-            z-index: 1; /* Ensure the button stays above the video */
+            z-index: 1;
         }
 
         .home-button:hover {
             background-color: #4a0e78;
+        }
+
+        /* Logo at the bottom left */
+        .logo {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 2;
+            width: 100px; /* Adjust the size as needed */
         }
     </style>
 </head>
@@ -116,5 +123,9 @@
             <div class="inner-container" style="background-image: url('P12.jpg');" title="P12"></div>
         </div>
     </div>
+
+    <!-- Logo at the bottom left -->
+    <img src="Swastik S.png" alt="Swastik Logo" class="logo">
+
 </body>
 </html>
