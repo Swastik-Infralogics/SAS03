@@ -6,30 +6,42 @@
     <title>Image Gallery - NHAI Project - SAS03</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* Full-page SVG background */
+        /* Full-page background video */
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover; /* Ensures the video covers the entire screen */
+            filter: brightness(0.5); /* Adjust the brightness for better contrast with text */
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('Animated Video.svg'); /* Set your SVG file here */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Keeps the background in place on scroll */
             color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative; /* Necessary to position content above the video */
         }
+
         .gallery-container {
             width: 100%;
             max-width: 1200px;
             padding: 10px;
+            z-index: 1; /* Ensure the content is above the video */
         }
+
         h1 {
             text-align: center;
             color: #fff;
             margin-bottom: 20px;
         }
+
         .inner-containers {
             display: flex;
             justify-content: center;
@@ -37,6 +49,7 @@
             padding: 20px 0;
             flex-wrap: wrap;
         }
+
         .inner-container {
             width: 180px;
             height: 270px;
@@ -50,12 +63,14 @@
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
             overflow: hidden;
         }
+
         .inner-container:hover {
             filter: grayscale(0) brightness(1);
             transform: scale(1.5); /* Enlarge the image on hover */
             z-index: 2; /* Bring the hovered image to the front */
             box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.8); /* Add a glow effect */
         }
+
         .home-button {
             display: inline-block;
             position: absolute;
@@ -67,13 +82,22 @@
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
+            z-index: 1; /* Ensure the button stays above the video */
         }
+
         .home-button:hover {
             background-color: #4a0e78;
         }
     </style>
 </head>
 <body>
+
+    <!-- Background Video -->
+    <video autoplay muted loop id="bg-video">
+        <source src="Animated Video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     <a href="https://swastik-infralogics.github.io/SAS03/" class="home-button">Home</a>
     <div class="gallery-container">
         <h1>Image Gallery - NHAI Project - SAS03</h1>
