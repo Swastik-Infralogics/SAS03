@@ -6,23 +6,15 @@
     <title>Image Gallery - NHAI Project - SAS03</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* Full-page background video */
-        #bg-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            min-width: 100%;
-            min-height: 100%;
-            z-index: -1;
-            object-fit: cover;
-            filter: brightness(0.5); /* Darkens the video for better contrast with content */
-        }
-
+        /* Full-page SVG background */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #111;
+            background-image: url('Animated Video.svg'); /* Set your SVG file here */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Keeps the background in place on scroll */
             color: #fff;
             display: flex;
             flex-direction: column;
@@ -82,12 +74,6 @@
     </style>
 </head>
 <body>
-    <!-- Background Video -->
-    <video autoplay muted loop id="bg-video">
-        <source src="Animated Video.svg" type="video/svg">
-        Your browser does not support the video tag.
-    </video>
-
     <a href="https://swastik-infralogics.github.io/SAS03/" class="home-button">Home</a>
     <div class="gallery-container">
         <h1>Image Gallery - NHAI Project - SAS03</h1>
