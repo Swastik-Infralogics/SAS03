@@ -570,8 +570,10 @@
                 navLinks.classList.remove('active');
                 hamburger.setAttribute('aria-expanded', false);
             }
+             // Disable right-click context menu on the entire page
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
        });
-
        
 </script>
 
