@@ -567,13 +567,13 @@
             }
        });
 
-    // Sticky Navigation bar
-    window.onscroll = function() {stickyNav()};
+        // Sticky Navigation bar
+        window.onscroll = function() {stickyNav()};
 
-    var navbar = document.getElementById("navbar");
-    var sticky = navbar.offsetTop;
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
 
-    function stickyNav() {
+        function stickyNav() {
         if (window.pageYOffset >= sticky) {
             navbar.classList.add("sticky")
         } else {
