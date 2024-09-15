@@ -54,8 +54,8 @@
             width: 100%;
             max-width: 500px;
             display: block;
-            margin: 10px auto;
-            align: left;
+            margin: 10px 0;
+            align-items: start;
 
         }
         .nav {
@@ -521,6 +521,11 @@
         navbar.classList.remove("sticky");
     }
 }
+
+    // Disable right-click context menu on the entire page
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+        });
     </script>
 </body>
 </html>
