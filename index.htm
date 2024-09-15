@@ -537,44 +537,46 @@
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var swiper = new Swiper('.swiper-container', {
-            spaceBetween: 30,
-            centeredSlides: true,
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            loop: true,
-        });
+   document.addEventListener('DOMContentLoaded', function() {
+    var swiper = new Swiper('.swiper-container', {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        loop: true,
+    });
 
-        const hamburger = document.getElementById('hamburger-menu');
-        const navLinks = document.getElementById('nav-links');
+    const hamburger = document.getElementById('hamburger-menu');
+    const navLinks = document.getElementById('nav-links');
 
-        hamburger.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
-            hamburger.setAttribute('aria-expanded', !expanded);
-        });
+    hamburger.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
+        hamburger.setAttribute('aria-expanded', !expanded);
+    });
 
-        navLinks.addEventListener('click', function(e) {
-            if(e.target.tagName === 'A') {
-                navLinks.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', false);
-            }
+    navLinks.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+            navLinks.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', false);
         }
-             // Disable right-click context menu on the entire page
-        document.addEventListener('contextmenu', function(event) {
-            event.preventDefault();
-       });
+    }); // Added missing closing brace and parenthesis here
+
+    // Disable right-click context menu on the entire page
+    document.addEventListener('contextmenu', function(event) {
+        event.preventDefault();
+    });
+}); // Added missing closing brace and parenthesis for DOMContentLoaded
        
 </script>
 
