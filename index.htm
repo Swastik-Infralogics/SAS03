@@ -46,17 +46,20 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .nav {
-    	   text-align: center;
-   	       background-color: #6a1b9a; /* Purple Background for Navigation Bar */
-   	       padding: 10px 0;
-   	       font-size: 18px;
-   	       position: relative; /* Default position, not fixed */
-     	   width: 100%;
-   	       top: 0;
-   	       z-index: 1000;
-    	   display: block;
-   	       font-weight: bold; /* Makes the text bold */
-    	   color: white; /* Text color */
+            position: sticky;
+            top: 0;
+            z-index: 1000; /* Ensure the navbar stays above other content */
+            text-align: center;
+            background-color: #6a1b9a;
+            padding: 10px 0;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(to bottom, #7b1fa2 0%, #4a148c 100%);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            border-bottom: 3px solid #4a148c;
+        }
+
     
     	/* 3D effect with box-shadow and gradient */
    	       background: linear-gradient(to bottom, #7b1fa2 0%, #4a148c 100%); /* Gradient for 3D effect */
@@ -569,19 +572,7 @@
             }
        });
 
-        // Sticky Navigation bar
-        window.onscroll = function() {stickyNav()};
-
-        var navbar = document.getElementById("navbar");
-        var sticky = navbar.offsetTop;
-
-        function stickyNav() {
-        if (window.pageYOffset >= sticky) {
-            navbar.classList.add("sticky")
-        } else {
-            navbar.classList.remove("sticky");
-        }
-    }
+       
 </script>
 
 </body>
