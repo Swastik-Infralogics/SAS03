@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Gallery - NHAI Project - SAS03</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
@@ -15,7 +14,7 @@
             min-height: 100%;
             z-index: -1;
             object-fit: cover;
-            filter: brightness(0.5); /* Adjust the brightness for better contrast with text */
+            filter: brightness(0.5);
         }
 
         body {
@@ -23,55 +22,15 @@
             margin: 0;
             padding: 0;
             color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             position: relative;
+            height: 100vh;
+            overflow: hidden; /* Prevent scrolling */
         }
 
-        .gallery-container {
-            width: 100%;
-            max-width: 1200px;
-            padding: 10px;
-            z-index: 1; /* Ensure the content is above the video */
-        }
-
-        h1 {
-            text-align: center;
-            color: #fff;
-            margin-bottom: 20px;
-        }
-
-        .inner-containers {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            padding: 20px 0;
-            flex-wrap: wrap;
-        }
-
-        .inner-container {
-            width: 180px;
-            height: 270px;
-            background-color: #222;
-            background-size: cover;
-            background-position: center;
-            cursor: pointer;
-            border-radius: 15px;
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-        }
-
-        .inner-container:hover {
-            transform: scale(1.5); /* Enlarge the image on hover */
-            z-index: 2; /* Bring the hovered image to the front */
-            box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.8); /* Add a glow effect */
-        }
-
+        /* Home button */
         .home-button {
             display: inline-block;
-            position: absolute;
+            position: fixed;
             top: 20px;
             left: 20px;
             padding: 10px 20px;
@@ -80,20 +39,101 @@
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
-            z-index: 1;
+            z-index: 10;
         }
 
         .home-button:hover {
             background-color: #4a0e78;
         }
 
-        /* Logo at the bottom left */
+        /* Main container */
+        .main-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 1; /* Ensure content is above the video */
+        }
+
+        .gallery-section {
+            width: 50%;
+            overflow-y: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .preview-section {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Gallery styles */
+        .gallery-section h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .inner-containers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .inner-container {
+            width: 100px;
+            height: 100px;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .inner-container:hover {
+            transform: scale(1.05);
+        }
+
+        /* Preview image */
+        .preview-section img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.7);
+        }
+
+        /* Logo */
         .logo {
             position: fixed;
             bottom: 20px;
             left: 20px;
             z-index: 2;
-            width: 100px; /* Adjust the size as needed */
+            width: 100px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 800px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .gallery-section, .preview-section {
+                width: 100%;
+                height: 50%;
+            }
+
+            .preview-section img {
+                max-width: 100%;
+                max-height: 100%;
+            }
         }
     </style>
 </head>
@@ -105,41 +145,107 @@
         Your browser does not support the video tag.
     </video>
 
+    <!-- Home Button -->
     <a href="https://swastik-infralogics.github.io/SAS03/" class="home-button">Home</a>
-    <div class="gallery-container">
-        <h1>Image Gallery - NHAI Project - SAS03</h1>
-        <div class="inner-containers">
-            <div class="inner-container" style="background-image: url('P1.jpg');" title="P1"></div>
-            <div class="inner-container" style="background-image: url('P2.jpg');" title="P2"></div>
-            <div class="inner-container" style="background-image: url('P3.jpg');" title="P3"></div>
-            <div class="inner-container" style="background-image: url('P4.jpg');" title="P4"></div>
-            <div class="inner-container" style="background-image: url('P5.jpg');" title="P5"></div>
-            <div class="inner-container" style="background-image: url('P6.jpg');" title="P6"></div>
-            <div class="inner-container" style="background-image: url('P7.jpg');" title="P7"></div>
-            <div class="inner-container" style="background-image: url('P8.jpg');" title="P8"></div>
-            <div class="inner-container" style="background-image: url('P9.jpg');" title="P9"></div>
-            <div class="inner-container" style="background-image: url('P10.jpg');" title="P10"></div>
-            <div class="inner-container" style="background-image: url('P11.jpg');" title="P11"></div>
-            <div class="inner-container" style="background-image: url('P12.jpg');" title="P12"></div>
-            <div class="inner-container" style="background-image: url('P13.jpg');" title="P13"></div>
-            <div class="inner-container" style="background-image: url('P14.jpg');" title="P14"></div>
-            <div class="inner-container" style="background-image: url('P15.jpg');" title="P15"></div>
-            <div class="inner-container" style="background-image: url('P16.jpg');" title="P16"></div>
-            <div class="inner-container" style="background-image: url('P17.jpg');" title="P17"></div>
-            <div class="inner-container" style="background-image: url('P18.jpg');" title="P18"></div>
-            <div class="inner-container" style="background-image: url('P19.jpg');" title="P19"></div>
-            <div class="inner-container" style="background-image: url('P20.jpg');" title="P20"></div>
-            <div class="inner-container" style="background-image: url('P21.jpg');" title="P21"></div>
-            <div class="inner-container" style="background-image: url('P22.jpg');" title="P22"></div>
-            <div class="inner-container" style="background-image: url('P23.jpg');" title="P23"></div>
-            <div class="inner-container" style="background-image: url('P24.jpg');" title="P24"></div>
-            <div class="inner-container" style="background-image: url('P25.jpg');" title="P25"></div>
-            <div class="inner-container" style="background-image: url('P26.jpg');" title="P26"></div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+
+        <!-- Gallery Section -->
+        <div class="gallery-section">
+            <h1>Image Gallery - NHAI Project - SAS03</h1>
+            <div class="inner-containers">
+                <!-- Image Thumbnails -->
+                <!-- Image 1 -->
+                <div class="inner-container" data-image="P1.jpg" title="P1" style="background-image: url('P1.jpg');"></div>
+                <!-- Image 2 -->
+                <div class="inner-container" data-image="P2.jpg" title="P2" style="background-image: url('P2.jpg');"></div>
+                <!-- Image 3 -->
+                <div class="inner-container" data-image="P3.jpg" title="P3" style="background-image: url('P3.jpg');"></div>
+                <!-- Image 4 -->
+                <div class="inner-container" data-image="P4.jpg" title="P4" style="background-image: url('P4.jpg');"></div>
+                <!-- Image 5 -->
+                <div class="inner-container" data-image="P5.jpg" title="P5" style="background-image: url('P5.jpg');"></div>
+                <!-- Image 6 -->
+                <div class="inner-container" data-image="P6.jpg" title="P6" style="background-image: url('P6.jpg');"></div>
+                <!-- Image 7 -->
+                <div class="inner-container" data-image="P7.jpg" title="P7" style="background-image: url('P7.jpg');"></div>
+                <!-- Image 8 -->
+                <div class="inner-container" data-image="P8.jpg" title="P8" style="background-image: url('P8.jpg');"></div>
+                <!-- Image 9 -->
+                <div class="inner-container" data-image="P9.jpg" title="P9" style="background-image: url('P9.jpg');"></div>
+                <!-- Image 10 -->
+                <div class="inner-container" data-image="P10.jpg" title="P10" style="background-image: url('P10.jpg');"></div>
+                <!-- Image 11 -->
+                <div class="inner-container" data-image="P11.jpg" title="P11" style="background-image: url('P11.jpg');"></div>
+                <!-- Image 12 -->
+                <div class="inner-container" data-image="P12.jpg" title="P12" style="background-image: url('P12.jpg');"></div>
+                <!-- Image 13 -->
+                <div class="inner-container" data-image="P13.jpg" title="P13" style="background-image: url('P13.jpg');"></div>
+                <!-- Image 14 -->
+                <div class="inner-container" data-image="P14.jpg" title="P14" style="background-image: url('P14.jpg');"></div>
+                <!-- Image 15 -->
+                <div class="inner-container" data-image="P15.jpg" title="P15" style="background-image: url('P15.jpg');"></div>
+                <!-- Image 16 -->
+                <div class="inner-container" data-image="P16.jpg" title="P16" style="background-image: url('P16.jpg');"></div>
+                <!-- Image 17 -->
+                <div class="inner-container" data-image="P17.jpg" title="P17" style="background-image: url('P17.jpg');"></div>
+                <!-- Image 18 -->
+                <div class="inner-container" data-image="P18.jpg" title="P18" style="background-image: url('P18.jpg');"></div>
+                <!-- Image 19 -->
+                <div class="inner-container" data-image="P19.jpg" title="P19" style="background-image: url('P19.jpg');"></div>
+                <!-- Image 20 -->
+                <div class="inner-container" data-image="P20.jpg" title="P20" style="background-image: url('P20.jpg');"></div>
+                <!-- Image 21 -->
+                <div class="inner-container" data-image="P21.jpg" title="P21" style="background-image: url('P21.jpg');"></div>
+                <!-- Image 22 -->
+                <div class="inner-container" data-image="P22.jpg" title="P22" style="background-image: url('P22.jpg');"></div>
+                <!-- Image 23 -->
+                <div class="inner-container" data-image="P23.jpg" title="P23" style="background-image: url('P23.jpg');"></div>
+                <!-- Image 24 -->
+                <div class="inner-container" data-image="P24.jpg" title="P24" style="background-image: url('P24.jpg');"></div>
+                <!-- Image 25 -->
+                <div class="inner-container" data-image="P25.jpg" title="P25" style="background-image: url('P25.jpg');"></div>
+                <!-- Image 26 -->
+                <div class="inner-container" data-image="P26.jpg" title="P26" style="background-image: url('P26.jpg');"></div>
+            </div>
         </div>
+
+        <!-- Preview Section -->
+        <div class="preview-section">
+            <img id="preview-image" src="" alt="">
+        </div>
+
     </div>
 
-    <!-- Logo at the bottom left -->
+    <!-- Logo -->
     <img src="Swastik S.png" alt="Swastik Logo" class="logo">
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const previewImage = document.getElementById('preview-image');
+            const galleryItems = document.querySelectorAll('.inner-container');
+
+            function showPreview(event) {
+                const imgSrc = event.currentTarget.getAttribute('data-image');
+                previewImage.src = imgSrc;
+                previewImage.alt = event.currentTarget.getAttribute('title');
+            }
+
+            galleryItems.forEach(item => {
+                item.addEventListener('mouseover', showPreview);
+                item.addEventListener('click', showPreview);
+            });
+
+            // Display the first image by default
+            if (galleryItems.length > 0) {
+                const firstImage = galleryItems[0].getAttribute('data-image');
+                previewImage.src = firstImage;
+                previewImage.alt = galleryItems[0].getAttribute('title');
+            }
+        });
+    </script>
 
 </body>
 </html>
