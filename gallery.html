@@ -7,101 +7,7 @@
     <link rel="icon" href="Swastik S.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* Full-page background video */
-        #bg-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            min-width: 100%;
-            min-height: 100%;
-            z-index: -1;
-            object-fit: cover;
-            filter: brightness(0.5); /* Adjust the brightness for better contrast with text */
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-        }
-
-        .gallery-container {
-            width: 100%;
-            max-width: 2000px;
-            padding: 10px;
-            z-index: 1; /* Ensure the content is above the video */
-        }
-
-        h1 {
-            text-align: center;
-            color: #fff;
-            margin-bottom: 30px;
-        }
-
-        .inner-containers {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            padding: 20px 0;
-            flex-wrap: wrap;
-        }
-
-        .inner-container {
-            width: 180px;
-            height: 270px;
-            overflow: hidden;
-            cursor: pointer;
-            border-radius: 15px;
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
-            position: relative;
-        }
-
-        .inner-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* Ensures the full image is visible */
-            border-radius: 15px;
-        }
-
-        .inner-container:hover {
-            transform: scale(1.5); /* Enlarge the image on hover */
-            z-index: 2; /* Bring the hovered image to the front */
-            box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.8); /* Add a glow effect */
-        }
-
-        /* Home button styles */
-        .home-button {
-            display: inline-block;
-            position: fixed; /* Changed from absolute to fixed */
-            top: 20px;
-            left: 20px;
-            padding: 10px 20px;
-            background-color: #6a1b9a;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            z-index: 10; /* Increased z-index */
-        }
-
-        .home-button:hover {
-            background-color: #4a0e78;
-        }
-
-        /* Logo at the bottom left */
-        .logo {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 2;
-            width: 100px; /* Adjust the size as needed */
-        }
+        /* Include the updated CSS here */
     </style>
 </head>
 <body>
@@ -118,115 +24,120 @@
     <div class="gallery-container">
         <h1>Image Gallery - NHAI Project - SAS03</h1>
         <div class="inner-containers">
-            <!-- Image 1 -->
+            <!-- Repeat for all images -->
             <div class="inner-container">
                 <img src="P1.jpg" alt="P1" title="P1">
             </div>
-            <!-- Image 2 -->
             <div class="inner-container">
                 <img src="P2.jpg" alt="P2" title="P2">
             </div>
-            <!-- Image 3 -->
-            <div class="inner-container">
-                <img src="P3.jpg" alt="P3" title="P3">
-            </div>
-            <!-- Image 4 -->
-            <div class="inner-container">
-                <img src="P4.jpg" alt="P4" title="P4">
-            </div>
-            <!-- Image 5 -->
-            <div class="inner-container">
-                <img src="P5.jpg" alt="P5" title="P5">
-            </div>
-            <!-- Image 6 -->
-            <div class="inner-container">
-                <img src="P6.jpg" alt="P6" title="P6">
-            </div>
-            <!-- Image 7 -->
-            <div class="inner-container">
-                <img src="P7.jpg" alt="P7" title="P7">
-            </div>
-            <!-- Image 8 -->
-            <div class="inner-container">
-                <img src="P8.jpg" alt="P8" title="P8">
-            </div>
-            <!-- Image 9 -->
-            <div class="inner-container">
-                <img src="P9.jpg" alt="P9" title="P9">
-            </div>
-            <!-- Image 10 -->
-            <div class="inner-container">
-                <img src="P10.jpg" alt="P10" title="P10">
-            </div>
-            <!-- Image 11 -->
-            <div class="inner-container">
-                <img src="P11.jpg" alt="P11" title="P11">
-            </div>
-            <!-- Image 12 -->
-            <div class="inner-container">
-                <img src="P12.jpg" alt="P12" title="P12">
-            </div>
-            <!-- Image 13 -->
-            <div class="inner-container">
-                <img src="P13.jpg" alt="P13" title="P13">
-            </div>
-            <!-- Image 14 -->
-            <div class="inner-container">
-                <img src="P14.jpg" alt="P14" title="P14">
-            </div>
-            <!-- Image 15 -->
-            <div class="inner-container">
-                <img src="P15.jpg" alt="P15" title="P15">
-            </div>
-            <!-- Image 16 -->
-            <div class="inner-container">
-                <img src="P16.jpg" alt="P16" title="P16">
-            </div>
-            <!-- Image 17 -->
-            <div class="inner-container">
-                <img src="P17.jpg" alt="P17" title="P17">
-            </div>
-            <!-- Image 18 -->
-            <div class="inner-container">
-                <img src="P18.jpg" alt="P18" title="P18">
-            </div>
-            <!-- Image 19 -->
-            <div class="inner-container">
-                <img src="P19.jpg" alt="P19" title="P19">
-            </div>
-            <!-- Image 20 -->
-            <div class="inner-container">
-                <img src="P20.jpg" alt="P20" title="P20">
-            </div>
-            <!-- Image 21 -->
-            <div class="inner-container">
-                <img src="P21.jpg" alt="P21" title="P21">
-            </div>
-            <!-- Image 22 -->
-            <div class="inner-container">
-                <img src="P22.jpg" alt="P22" title="P22">
-            </div>
-            <!-- Image 23 -->
-            <div class="inner-container">
-                <img src="P23.jpg" alt="P23" title="P23">
-            </div>
-            <!-- Image 24 -->
-            <div class="inner-container">
-                <img src="P24.jpg" alt="P24" title="P24">
-            </div>
-            <!-- Image 25 -->
-            <div class="inner-container">
-                <img src="P25.jpg" alt="P25" title="P25">
-            </div>
-            <!-- Image 26 -->
+            <!-- Continue adding images up to P26.jpg -->
+            <!-- ... -->
             <div class="inner-container">
                 <img src="P26.jpg" alt="P26" title="P26">
             </div>
         </div>
     </div>
+    /* Full-page background video */
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    object-fit: cover;
+    filter: brightness(0.5);
+}
 
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.gallery-container {
+    width: 100%;
+    max-width: 2000px;
+    padding: 10px;
+    z-index: 1;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.inner-containers {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 20px 0;
+}
+
+.inner-container {
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    position: relative;
+    flex: 1 1 auto;
+    max-width: 200px;
+}
+
+.inner-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px;
+}
+
+.inner-container:hover {
+    transform: scale(1.2);
+    z-index: 2;
+    box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.8);
+}
+
+.home-button {
+    display: inline-block;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #6a1b9a;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    z-index: 10;
+}
+
+.home-button:hover {
+    background-color: #4a0e78;
+}
+
+.logo {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 2;
+    width: 100px;
+}
+@media (max-width: 600px) {
+    .inner-container:hover {
+        transform: scale(1.05); /* Less scaling on smaller screens */
+    }
+}
     <!-- Logo at the bottom left -->
     <img src="Swastik S.png" alt="Swastik Logo" class="logo">
-
+}
 </body>
 </html>
