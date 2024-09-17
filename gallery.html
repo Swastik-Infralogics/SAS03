@@ -7,6 +7,7 @@
     <link rel="icon" href="Swastik S.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
+        /* Your existing styles remain unchanged */
         /* Full-page background video */
         #bg-video {
             position: fixed;
@@ -156,64 +157,8 @@
         <!-- Gallery Section -->
         <div class="gallery-section">
             <h1>Image Gallery - NHAI Project - SAS03</h1>
-            <div class="inner-containers">
-                <!-- Image Thumbnails -->
-                <!-- Image 1 -->
-                <div class="inner-container" data-image="P1.jpg" title="P1" style="background-image: url('P1.jpg');"></div>
-                <!-- Image 2 -->
-                <div class="inner-container" data-image="P2.jpg" title="P2" style="background-image: url('P2.jpg');"></div>
-                <!-- Image 3 -->
-                <div class="inner-container" data-image="P3.jpg" title="P3" style="background-image: url('P3.jpg');"></div>
-                <!-- Image 4 -->
-                <div class="inner-container" data-image="P4.jpg" title="P4" style="background-image: url('P4.jpg');"></div>
-                <!-- Image 5 -->
-                <div class="inner-container" data-image="P5.jpg" title="P5" style="background-image: url('P5.jpg');"></div>
-                <!-- Image 6 -->
-                <div class="inner-container" data-image="P6.jpg" title="P6" style="background-image: url('P6.jpg');"></div>
-                <!-- Image 7 -->
-                <div class="inner-container" data-image="P7.jpg" title="P7" style="background-image: url('P7.jpg');"></div>
-                <!-- Image 8 -->
-                <div class="inner-container" data-image="P8.jpg" title="P8" style="background-image: url('P8.jpg');"></div>
-                <!-- Image 9 -->
-                <div class="inner-container" data-image="P9.jpg" title="P9" style="background-image: url('P9.jpg');"></div>
-                <!-- Image 10 -->
-                <div class="inner-container" data-image="P10.jpg" title="P10" style="background-image: url('P10.jpg');"></div>
-                <!-- Image 11 -->
-                <div class="inner-container" data-image="P11.jpg" title="P11" style="background-image: url('P11.jpg');"></div>
-                <!-- Image 12 -->
-                <div class="inner-container" data-image="P12.jpg" title="P12" style="background-image: url('P12.jpg');"></div>
-                <!-- Image 13 -->
-                <div class="inner-container" data-image="P13.jpg" title="P13" style="background-image: url('P13.jpg');"></div>
-                <!-- Image 14 -->
-                <div class="inner-container" data-image="P14.jpg" title="P14" style="background-image: url('P14.jpg');"></div>
-                <!-- Image 15 -->
-                <div class="inner-container" data-image="P15.jpg" title="P15" style="background-image: url('P15.jpg');"></div>
-                <!-- Image 16 -->
-                <div class="inner-container" data-image="P16.jpg" title="P16" style="background-image: url('P16.jpg');"></div>
-                <!-- Image 17 -->
-                <div class="inner-container" data-image="P17.jpg" title="P17" style="background-image: url('P17.jpg');"></div>
-                <!-- Image 18 -->
-                <div class="inner-container" data-image="P18.jpg" title="P18" style="background-image: url('P18.jpg');"></div>
-                <!-- Image 19 -->
-                <div class="inner-container" data-image="P19.jpg" title="P19" style="background-image: url('P19.jpg');"></div>
-                <!-- Image 20 -->
-                <div class="inner-container" data-image="P20.jpg" title="P20" style="background-image: url('P20.jpg');"></div>
-                <!-- Image 21 -->
-                <div class="inner-container" data-image="P21.jpg" title="P21" style="background-image: url('P21.jpg');"></div>
-                <!-- Image 22 -->
-                <div class="inner-container" data-image="P22.jpg" title="P22" style="background-image: url('P22.jpg');"></div>
-                <!-- Image 23 -->
-                <div class="inner-container" data-image="P23.jpg" title="P23" style="background-image: url('P23.jpg');"></div>
-                <!-- Image 24 -->
-                <div class="inner-container" data-image="P24.jpg" title="P24" style="background-image: url('P24.jpg');"></div>
-                <!-- Image 25 -->
-                <div class="inner-container" data-image="P25.jpg" title="P25" style="background-image: url('P25.jpg');"></div>
-                <!-- Image 26 -->
-                <div class="inner-container" data-image="P26.jpg" title="P26" style="background-image: url('P26.jpg');"></div>
-                <!-- Image 27 -->
-                <div class="inner-container" data-image="P27.jpg" title="P27" style="background-image: url('P27.jpg');"></div>
-                <!-- Image 28 -->
-                <div class="inner-container" data-image="P28.jpg" title="P28" style="background-image: url('P28.jpg');"></div>
+            <div class="inner-containers" id="gallery">
+                <!-- Dynamically loaded images from Google Drive will appear here -->
             </div>
         </div>
 
@@ -227,29 +172,54 @@
     <!-- Logo -->
     <img src="Swastik S.png" alt="Swastik Logo" class="logo">
 
-    <!-- JavaScript -->
+    <!-- JavaScript to Load Images from Google Drive API -->
+    <script src="https://apis.google.com/js/api.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const previewImage = document.getElementById('preview-image');
-            const galleryItems = document.querySelectorAll('.inner-container');
-
-            function showPreview(event) {
-                const imgSrc = event.currentTarget.getAttribute('data-image');
-                previewImage.src = imgSrc;
-                previewImage.alt = event.currentTarget.getAttribute('title');
-            }
-
-            galleryItems.forEach(item => {
-                item.addEventListener('mouseover', showPreview);
-                item.addEventListener('click', showPreview);
+        function loadClient() {
+            gapi.load("client:auth2", function() {
+                gapi.auth2.init({client_id: "762399051300-ok3rcfci2904o2t87qip11evkce89dhb.apps.googleusercontent.com"});  // Replace with your OAuth 2.0 Client ID
+                gapi.client.setApiKey("YOUR_API_KEY");  // Replace with your API Key
+                return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/drive/v3/rest")
+                    .then(function() { 
+                        console.log("GAPI client loaded for API");
+                        listImages();  // Call your image listing function here
+                    },
+                    function(err) { 
+                        console.error("Error loading GAPI client for API", err);
+                    });
             });
+        }
 
-            // Display the first image by default
-            if (galleryItems.length > 0) {
-                const firstImage = galleryItems[0].getAttribute('data-image');
-                previewImage.src = firstImage;
-                previewImage.alt = galleryItems[0].getAttribute('title');
-            }
+        function listImages() {
+            gapi.client.drive.files.list({
+                'q': "'16krYsVMK38hKvUY1XjC8P3_c5ubauFCI' in parents and mimeType contains 'image/'",
+                'pageSize': 50,  // Adjust the number of images loaded
+                'fields': "nextPageToken, files(id, name, thumbnailLink)"
+            }).then(function(response) {
+                const files = response.result.files;
+                let gallery = document.getElementById('gallery');
+                if (files && files.length > 0) {
+                    files.forEach((file) => {
+                        const imgDiv = document.createElement('div');
+                        imgDiv.classList.add('inner-container');
+                        imgDiv.style.backgroundImage = `url(${file.thumbnailLink})`;
+                        imgDiv.setAttribute('data-image', file.thumbnailLink);
+                        imgDiv.title = file.name;
+                        gallery.appendChild(imgDiv);
+                        
+                        imgDiv.addEventListener('click', function() {
+                            const previewImage = document.getElementById('preview-image');
+                            previewImage.src = file.thumbnailLink;
+                            previewImage.alt = file.name;
+                        });
+                    });
+                }
+            });
+        }
+
+        // Initialize the API on document load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadClient();
         });
     </script>
 
