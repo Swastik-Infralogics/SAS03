@@ -231,11 +231,11 @@
     let startX = 0; // Starting X position for dragging
     let startY = 0; // Starting Y position for dragging
 
-    let columns = 1; // Number of columns in the thumbnail grid
+    const columns = 4; // Number of columns in the thumbnail grid
 
     document.addEventListener('DOMContentLoaded', function () {
       listImages();
-      window.addEventListener('resize', updateColumns); // Recalculate columns on resize
+      document.addEventListener('keydown', handleKeyDown);
     });
 
     async function listImages() {
@@ -287,9 +287,6 @@
           });
         });
 
-        // Determine the number of columns after thumbnails are loaded
-        updateColumns();
-
         // Optional: Display the first image by default
         if (images.length > 0) {
           currentIndex = 0;
@@ -337,16 +334,16 @@
           break;
         case 'ArrowUp':
           event.preventDefault();
-          if (currentIndex < images.length - 1) {
-            currentIndex++;
+          if (currentIndex > 0) {
+            currentIndex--;
             displayImage(currentIndex);
             updateThumbnailSelection();
           }
           break;
         case 'ArrowDown':
           event.preventDefault();
-         if (currentIndex < images.length - 1) {
-            currentIndex++;
+          if (currentIndex > 0) {
+            currentIndex--;
             displayImage(currentIndex);
             updateThumbnailSelection();
           }
@@ -366,31 +363,24 @@
     }
 
     /**
-     * Determines and updates the number of columns based on the current layout.
+     * Scrolls the gallery container up or down by a fixed amount.
+     * @param {string} direction - 'up' or 'down' indicating the scroll direction.
      */
-    function updateColumns() {
-      const thumbnails = document.querySelectorAll('.inner-container');
-      if (thumbnails.length === 0) {
-        columns = 1;
-        return;
+    function scrollGallery(direction) {
+      const gallery = document.getElementById('gallery');
+      const scrollAmount = 100; // Adjust scroll amount as needed
+
+      if (direction === 'up') {
+        gallery.scrollBy({
+          top: -scrollAmount,
+          behavior: 'smooth'
+        });
+      } else if (direction === 'down') {
+        gallery.scrollBy({
+          top: scrollAmount,
+          behavior: 'smooth'
+        });
       }
-
-      const firstThumbnail = thumbnails[0];
-      const firstRect = firstThumbnail.getBoundingClientRect();
-      let columnCount = 1;
-
-      for (let i = 1; i < thumbnails.length; i++) {
-        const currentRect = thumbnails[i].getBoundingClientRect();
-        if (Math.abs(currentRect.top - firstRect.top) < 5) { // Allowing a small margin
-          columnCount++;
-        } else {
-          break;
-        }
-      }
-
-      columns = columnCount;
-      // Optionally, you can log the number of columns for debugging
-      // console.log(`Number of columns: ${columns}`);
     }
 
     function zoomIn() {
@@ -553,8 +543,6 @@
       }
     }
 
-    // Add keydown event listener
-    document.addEventListener('keydown', handleKeyDown);
   </script>
 
 </body>
