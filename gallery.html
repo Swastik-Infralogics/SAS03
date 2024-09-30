@@ -190,114 +190,6 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-
-    /* Slideshow button and controls */
-    #slideshow-controls {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-    }
-
-    #slideshow-button {
-      padding: 10px 20px;
-      background-color: #6a1b9a;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-right: 10px;
-    }
-
-    #slideshow-button:hover {
-      background-color: #4a0e78;
-    }
-
-    #manual-button {
-      padding: 10px 20px;
-      background-color: #6a1b9a;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-right: 10px;
-    }
-
-    #manual-button:hover {
-      background-color: #4a0e78;
-    }
-
-    #speed-label {
-      margin-right: 5px;
-      color: #fff;
-    }
-
-    #speed-input {
-      width: 50px;
-      padding: 5px;
-      border-radius: 5px;
-      border: none;
-    }
-
-    /* Slideshow navigation buttons */
-    #slideshow-nav {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-button {
-      padding: 10px 15px;
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      margin: 0 5px;
-      font-size: 18px;
-    }
-
-    .nav-button:hover {
-      background-color: rgba(0, 0, 0, 0.7);
-    }
-
-    /* Fullscreen slideshow styles */
-    #slideshow-fullscreen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: transparent; /* Changed from black to transparent */
-      z-index: 9998;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #slideshow-image-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-    }
-
-    .slideshow-image {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
-
-    /* For displaying two portrait images side by side */
-    #slideshow-image-container.two-images .slideshow-image {
-      width: 50%;
-    }
   </style>
 </head>
 <body>
@@ -314,15 +206,6 @@
 
   <a href="https://swastik-infralogics.github.io/SAS03/" class="home-button">Home</a>
 
-  <!-- Slideshow Controls -->
-  <div id="slideshow-controls">
-  <button id="slideshow-button">Auto Slideshow</button>
-  <button id="manual-button">Manual Slideshow</button>
-  <label for="speed-input" id="speed-label">Speed (s):</label>
-  <input type="number" id="speed-input" min="1" value="1">
-</div>
-
-
   <div class="main-container">
 
     <div class="gallery-section">
@@ -338,19 +221,6 @@
 
   <img src="Swastik S.png" alt="Swastik Logo" class="logo">
 
-  <!-- Slideshow Fullscreen Container -->
-  <div id="slideshow-fullscreen" style="display:none;">
-  <div id="slideshow-nav">
-    <button id="prev-button" class="nav-button">&#9664;</button>
-    <button id="pause-button" class="nav-button">&#10074;&#10074;</button>
-    <button id="next-button" class="nav-button">&#9654;</button>
-    <button id="exit-button" class="nav-button">Exit</button>
-  </div>
-  <div id="slideshow-image-container">
-      <!-- Images will be injected here -->
-    </div>
-  </div>
-
   <script>
     let images = []; // Global array to store image objects
     let currentIndex = -1; // Current selected image index
@@ -363,50 +233,9 @@
 
     let columns = 1; // Number of columns in the thumbnail grid
 
-    let slideshowInterval = null; // Slideshow interval ID
-    let isPaused = false; // Pause state for slideshow
-    let isManual = false; // Manual slideshow mode
-
     document.addEventListener('DOMContentLoaded', function () {
       listImages();
       window.addEventListener('resize', updateColumns); // Recalculate columns on resize
-
-      // Slideshow button event listeners
-      document.getElementById('slideshow-button').addEventListener('click', function() {
-        isManual = false;
-        if (slideshowInterval === null) {
-          startSlideshow();
-        }
-      });
-
-      document.getElementById('manual-button').addEventListener('click', function() {
-        isManual = true;
-        if (slideshowInterval === null) {
-          startSlideshow();
-        }
-      });
-
-      // Slideshow navigation buttons
-      document.getElementById('prev-button').addEventListener('click', function(event) {
-        event.stopPropagation();
-        showPreviousSlide();
-      });
-
-      document.getElementById('next-button').addEventListener('click', function(event) {
-        event.stopPropagation();
-        showNextSlide();
-      });
-
-      document.getElementById('pause-button').addEventListener('click', function(event) {
-        event.stopPropagation();
-        togglePauseSlideshow();
-      });
-
-      // Exit button event listener
-      document.getElementById('exit-button').addEventListener('click', function(event) {
-        event.stopPropagation();
-        stopSlideshow();
-      });
     });
 
     async function listImages() {
@@ -437,9 +266,7 @@
 
         gallery.innerHTML = '';
 
-        // Load images and get their aspect ratios
-        for (let i = 0; i < images.length; i++) {
-          const item = images[i];
+        images.forEach((item, index) => {
           const imageName = item.name;
           const imageUrl = `https://storage.googleapis.com/${bucketName}/${encodeURIComponent(imageName)}`;
 
@@ -449,31 +276,16 @@
 
           imgDiv.style.backgroundImage = `url(${thumbnailUrl})`;
           imgDiv.setAttribute('data-image', imageUrl);
-          imgDiv.setAttribute('data-index', i); // Store index
+          imgDiv.setAttribute('data-index', index); // Store index
           imgDiv.title = imageName;
           gallery.appendChild(imgDiv);
 
           imgDiv.addEventListener('click', function () {
-            currentIndex = i;
+            currentIndex = index;
             displayImage(currentIndex);
             highlightSelectedThumbnail(this);
-            stopSlideshow(); // Stop slideshow when a thumbnail is clicked
           });
-
-          // Load image to get aspect ratio
-          const img = new Image();
-          img.src = imageUrl;
-          await new Promise((resolve) => {
-            img.onload = () => {
-              images[i].aspectRatio = img.naturalWidth / img.naturalHeight;
-              resolve();
-            };
-            img.onerror = () => {
-              images[i].aspectRatio = 1; // Default aspect ratio
-              resolve();
-            };
-          });
-        }
+        });
 
         // Determine the number of columns after thumbnails are loaded
         updateColumns();
@@ -585,6 +397,8 @@
       }
 
       columns = columnCount;
+      // Optionally, you can log the number of columns for debugging
+      // console.log(`Number of columns: ${columns}`);
     }
 
     function zoomIn() {
@@ -609,7 +423,7 @@
       previewImage.style.transform = `scale(${zoomLevel}) translate(${translateX}px, ${translateY}px)`;
     }
 
-    // Allow zoom with mouse wheel while holding Ctrl
+    // Optional: Allow zoom with mouse wheel while holding Ctrl
     document.getElementById('preview-image').addEventListener('wheel', function(event) {
       if (event.ctrlKey) {
         event.preventDefault();
@@ -621,7 +435,7 @@
       }
     });
 
-    // Implement pinch-to-zoom for touch devices
+    // Optional: Implement pinch-to-zoom for touch devices
     let initialDistance = null;
 
     document.getElementById('preview-image').addEventListener('touchstart', function(event) {
@@ -749,221 +563,7 @@
 
     // Add keydown event listener
     document.addEventListener('keydown', handleKeyDown);
-
-    // Slideshow functions
-function startSlideshow() {
-  const speedInput = document.getElementById('speed-input');
-  let speed = parseInt(speedInput.value) * 1000; // Convert to milliseconds
-
-  isPaused = false;
-  document.getElementById('pause-button').innerHTML = '&#10074;&#10074;';
-
-  document.getElementById('slideshow-button').disabled = true;
-  document.getElementById('manual-button').disabled = true;
-
-  // Hide other elements
-  document.querySelector('.gallery-section').style.display = 'none';
-  document.querySelector('.preview-section').style.display = 'none';
-  document.getElementById('slideshow-fullscreen').style.display = 'flex';
-
-  // Hide slideshow controls
-  document.getElementById('slideshow-controls').style.display = 'none';
-
-  // Add keydown event listener for slideshow navigation and exit
-  document.addEventListener('keydown', handleSlideshowKeydown);
-
-  // Ensure currentIndex is valid
-  if (currentIndex < 0 || currentIndex >= images.length) {
-    currentIndex = 0;
-  }
-
-  showCurrentSlide();
-
-  if (!isManual) {
-    slideshowInterval = setInterval(function () {
-      if (!isPaused) {
-        showNextSlide();
-      }
-    }, speed);
-  }
-}
-
-function stopSlideshow() {
-  if (slideshowInterval !== null) {
-    clearInterval(slideshowInterval);
-    slideshowInterval = null;
-  }
-  isPaused = false;
-
-  document.getElementById('slideshow-button').disabled = false;
-  document.getElementById('manual-button').disabled = false;
-
-  // Show other elements
-  document.querySelector('.gallery-section').style.display = 'block';
-  document.querySelector('.preview-section').style.display = 'flex';
-  document.getElementById('slideshow-fullscreen').style.display = 'none';
-
-  // Show slideshow controls
-  document.getElementById('slideshow-controls').style.display = 'flex';
-
-  // Remove keydown event listener for slideshow navigation and exit
-  document.removeEventListener('keydown', handleSlideshowKeydown);
-}
-
-function togglePauseSlideshow() {
-  isPaused = !isPaused;
-  document.getElementById('pause-button').innerHTML = isPaused
-    ? '&#9654;'
-    : '&#10074;&#10074;';
-}
-
-function showCurrentSlide() {
-  const container = document.getElementById('slideshow-image-container');
-  container.innerHTML = ''; // Clear previous images
-
-  // Decide how many images to show based on orientation
-  let slides = [];
-  let indexIncrement = 1;
-
-  const currentImage = images[currentIndex];
-  slides.push(currentImage);
-
-  const nextIndex = (currentIndex + 1) % images.length;
-
-  if (isPortrait(currentImage) && isPortrait(images[nextIndex])) {
-    // Show two portrait images side by side
-    slides.push(images[nextIndex]);
-    if (!isManual) indexIncrement = 2;
-  }
-
-  // Create image elements
-  slides.forEach((image) => {
-    const imgElement = document.createElement('img');
-    imgElement.src = `https://storage.googleapis.com/swastik_bucket-1/${encodeURIComponent(
-      image.name
-    )}`;
-    imgElement.classList.add('slideshow-image');
-    container.appendChild(imgElement);
-  });
-
-  // Adjust container class based on number of images
-  if (slides.length === 2) {
-    container.classList.add('two-images');
-  } else {
-    container.classList.remove('two-images');
-  }
-
-  // For manual mode, do not auto-increment currentIndex
-  if (!isManual) {
-    // Update currentIndex for next slide
-    currentIndex = (currentIndex + indexIncrement) % images.length;
-  }
-}
-
-function showNextSlide() {
-  if (isManual) {
-    // Increment currentIndex appropriately
-    let indexIncrement = 1;
-    const currentImage = images[currentIndex];
-    const nextIndex = (currentIndex + 1) % images.length;
-
-    if (isPortrait(currentImage) && isPortrait(images[nextIndex])) {
-      indexIncrement = 2;
-    }
-
-    currentIndex = (currentIndex + indexIncrement) % images.length;
-  }
-  showCurrentSlide();
-}
-
-function showPreviousSlide() {
-  let indexDecrement = 1;
-  if (currentIndex > 0) {
-    const prevIndex = (currentIndex - 1 + images.length) % images.length;
-    const prevPrevIndex = (currentIndex - 2 + images.length) % images.length;
-
-    if (isPortrait(images[prevIndex]) && isPortrait(images[prevPrevIndex])) {
-      indexDecrement = 2;
-    }
-  } else {
-    currentIndex = images.length;
-  }
-  currentIndex = (currentIndex - indexDecrement + images.length) % images.length;
-  showCurrentSlide();
-}
-
-function isPortrait(image) {
-  return image.aspectRatio < 1;
-}
-
-// Handle keydown events during slideshow
-function handleSlideshowKeydown(event) {
-  if (event.key === 'ArrowLeft') {
-    event.preventDefault();
-    showPreviousSlide();
-    resetSlideshowInterval();
-  } else if (event.key === 'ArrowRight') {
-    event.preventDefault();
-    showNextSlide();
-    resetSlideshowInterval();
-  } else if (event.key === 'Escape') {
-    event.preventDefault();
-    stopSlideshow();
-  }
-}
-
-// Reset the slideshow interval when user interacts
-function resetSlideshowInterval() {
-  if (slideshowInterval !== null) {
-    clearInterval(slideshowInterval);
-    const speedInput = document.getElementById('speed-input');
-    let speed = parseInt(speedInput.value) * 1000; // Convert to milliseconds
-    slideshowInterval = setInterval(function () {
-      if (!isPaused) {
-        showNextSlide();
-      }
-    }, speed);
-  }
-}
-
-// Event listeners for slideshow navigation buttons
-document.getElementById('prev-button').addEventListener('click', function (event) {
-  event.stopPropagation();
-  showPreviousSlide();
-});
-
-document.getElementById('next-button').addEventListener('click', function (event) {
-  event.stopPropagation();
-  showNextSlide();
-});
-
-document.getElementById('pause-button').addEventListener('click', function (event) {
-  event.stopPropagation();
-  togglePauseSlideshow();
-});
-
-// Exit button event listener
-document.getElementById('exit-button').addEventListener('click', function (event) {
-  event.stopPropagation();
-  stopSlideshow();
-});
-
-// Close slideshow when clicking outside images
-document
-  .getElementById('slideshow-fullscreen')
-  .addEventListener('click', function (event) {
-    if (event.target.id === 'slideshow-fullscreen') {
-      stopSlideshow();
-    }
-  });
-
-// Prevent navigation buttons from closing the slideshow
-document.getElementById('slideshow-nav').addEventListener('click', function (event) {
-  event.stopPropagation();
-});
-
-
   </script>
 
 </body>
-</html>
+</html>  
